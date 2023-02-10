@@ -1,0 +1,27 @@
+{
+  "Kubernetes Volsync ReplicationSource Restic": {
+    "prefix": ["kreplicationsource", "k-replicationsource"],
+    "description": "Kubernetes Volsync ReplicationSource Restic",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/replicationsource_v1alpha1.json",
+      "apiVersion: volsync.backube/v1alpha1",
+      "kind: ReplicationSource",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  sourcePVC: ${2:app-config}",
+      "  trigger:",
+      "    schedule: ${3:0 0 * * *}",
+      "  restic:",
+      "    copyMethod: ${3|Snapshot,Clone,Direct|}",
+      "    pruneIntervalDays: ${4:10}",
+      "    repository: ${5:app-restic-secret}",
+      "    volumeSnapShotClassName: ${6|rook-ceph-block,nfs-provisioner,default|}",
+      "    storageClassName: ${7|rook-ceph-block,nfs-provisioner,default|}",
+      "    retain:",
+      "      daily: ${8:10}",
+      "      within: ${9:3d}$0"
+    ]
+  },
+}

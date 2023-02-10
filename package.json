@@ -1,0 +1,30 @@
+{
+  "name": "k8s-snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "snippets": [
+      {
+        "language": "yaml",
+        "path": "./snippets/k8s_io-api.json"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/toolkit_fluxcd_io-api.json"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/traefik_containo_us-api.json"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/cert-manager_io-api.json"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/volsync_backube-api.json"
+      },
+    ]
+  }
+}

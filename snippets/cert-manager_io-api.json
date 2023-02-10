@@ -1,0 +1,168 @@
+{
+  "Kubernetes cert-manager Certificate": {
+    "prefix": ["kcert", "k-cert", "kcertificate", "k-certificate"],
+    "description": "Kubernetes cert-manager Certificate",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/certificate_v1.json",
+      "apiVersion: cert-manager.io/v1",
+      "kind: Certificate",
+      "metadata:",
+      "  name: ${1:example-com}",
+      "spec:",
+      "  secretName: ${2:example-foo-com-prod-tls}",
+      "  dnsNames:",
+      "    - \"${1/[-_]/./g}\"",
+      "    - \"*.${1/[-_]/./g}\"",
+      "  issuerRef:",
+      "    name: ${3:letsencrypt-prod}",
+      "    kind: ${4|ClusterIssuer,Issuer|}",
+      "    group: cert-manager.io$0"
+    ]
+  },
+
+  "Kubernetes cert-manager ClusterIssuer": {
+    "prefix": ["kclusterissuer", "k-clusterissuer"],
+    "description": "Kubernetes cert-manager ClusterIssuer",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/clusterissuer_v1.json",
+      "apiVersion: cert-manager.io/v1",
+      "kind: ClusterIssuer",
+      "metadata:",
+      "  name: ${1:letsencrypt}",
+      "spec:",
+      "  acme:",
+      "    email: ${2:budimanjojo@gmail.com}",
+      "    server: ${3|https://acme-v02.api.letsencrypt.org/directory,https://acme-staging-v02.api.letsencrypt.org/directory|}",
+      "    preferredChain: ISRG Root X1",
+      "    privateKeySecretRef:",
+      "      name: ${1:letsencrypt}-account-key",
+      "    solvers:",
+      "      - $0"
+    ]
+  },
+
+  "cert-manager HTTP01 Solver": {
+    "prefix": "http01",
+    "description": "cert-manager HTTP01 Solver",
+    "body": [
+      "http01:",
+      "  ingress:",
+      "    class: ${1:nginx}$0"
+    ]
+  },
+
+  "cert-manager DNS01 Solver": {
+    "prefix": "dns01",
+    "description": "cert-manager DNS01 Solver",
+    "body": [
+      "dns01:",
+      "  $0"
+    ]
+  },
+
+  "cert-manager ACMEDNS DNS01 Solver": {
+    "prefix": "acmeDNS",
+    "description": "cert-manager ACMEDNS DNS01 Solver",
+    "body": [
+      "acmeDNS:",
+      "  host: ${1:example.com}",
+      "  accountSecretRef:",
+      "    name: ${2:acme-dns}",
+      "    key: ${3:acmedns.json}$0"
+    ]
+  },
+
+  "cert-manager Akamai DNS01 Solver": {
+    "prefix": "akamai",
+    "description": "cert-manager Akamai DNS01 Solver",
+    "body": [
+      "akamai:",
+      "  serviceConsumerDomain: use_akamai_host",
+      "  clientTokenSecretRef:",
+      "    name: ${1:akamai-secret}",
+      "    key: clientToken",
+      "  clientSecretSecretRef:",
+      "    name: ${1:akamai-secret}",
+      "    key: clientSecret",
+      "  accessTokenSecretRef:",
+      "    name: ${1:akamai-secret}",
+      "    key: accessToken$0"
+    ]
+  },
+
+  "cert-manager AzureDNS DNS01 Solver": {
+    "prefix": "azureDNS",
+    "description": "cert-manager AzureDNS DNS01 Solver",
+    "body": [
+      "azureDNS:",
+      "  hostedZoneName: ${1:example.com}",
+      "  resourceGroupName: ${2:resource-group}",
+      "  subscriptionID: ${3:\\$(az account show --name \\$AZURE_SUBSCRIPTION --query 'id' -o tsv)}",
+      "  environment: ${4:AzurePublicCloud}",
+      "  managedIdentity:",
+      "    clientID: ${5:Azure client ID}$0"
+    ]
+  },
+  
+  "cert-manager Cloudflare DNS01 Solver": {
+    "prefix": "cloudflare",
+    "description": "cert-manager Cloudflare DNS01 Solver",
+    "body": [
+      "cloudflare:",
+      "  apiTokenSecretRef:",
+      "    name: ${1:cloudflare-api-token-secret}",
+      "    key: ${2:api-token}$0"
+    ]
+  },
+
+  "cert-manager DigitalOcean DNS01 Solver": {
+    "prefix": "digitalocean",
+    "description": "cert-manager DigitalOcean DNS01 Solver",
+    "body": [
+      "digitalocean:",
+      "  tokenSecretRef:",
+      "    name: ${1:digialocean-token-secret}",
+      "    key: ${2:access-token}$0"
+    ]
+  },
+
+  "cert-manager CloudDNS DNS01 Solver": {
+    "prefix": "cloudDNS",
+    "description": "cert-manager CloudDNS DNS01 Solver",
+    "body": [
+      "cloudDNS:",
+      "  project: ${1:project-id}",
+      "  serviceAccountSecretRef:",
+      "    name: ${2:clouddns-secret}",
+      "    key: ${3:key.json}$0"
+    ]
+  },
+
+  "cert-manager Route53 DNS01 Solver": {
+    "prefix": "route53",
+    "description": "cert-manager Route53 DNS01 Solver",
+    "body": [
+      "route53:",
+      "  region: ${1:eu-central-1}",
+      "  accessKeyID: ${2:access-key-id}",
+      "  secretAccessKeySecretRef:",
+      "    name: ${3:route53-secret}",
+      "    key: ${4:access-key}",
+      "  role: ${5:arn:aws:iam::YYYYYYYYYYYY:role/dns-manager}$0"
+    ]
+  },
+
+  "cert-manager Webhook DNS01 Solver": {
+    "prefix": "webhook",
+    "description": "cert-manager Webhook DNS01 Solver",
+    "body": [
+      "webhook:",
+      "  groupName: ${1:group-name}",
+      "  solverName: ${2:ovh}",
+      "  config:",
+      "    $0"
+    ]
+  }
+}

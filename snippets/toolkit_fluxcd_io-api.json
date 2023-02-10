@@ -1,0 +1,151 @@
+{
+  "Kubernetes Flux GitRepository": {
+    "prefix": ["kgitrepo", "k-gitrepo", "kgitrepository", "k-gitrepository"],
+    "description": "Kubernetes Flux GitRepository",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/gitrepository-source-v1beta2.json",
+      "apiVersion: source.toolkit.fluxcd.io/v1beta2",
+      "kind: GitRepository",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  interval: ${3:10m}",
+      "  url: ${4:ssh://git@github.com/budimanjojo/home-cluster}",
+      "  ref:",
+      "    branch: ${5:main}",
+      "  secretRef:",
+      "    name: ${6:flux-system}$0"
+    ]
+  },
+
+  "Kubernetes Flux OCIRepository": {
+    "prefix": ["kocirepo", "k-ocirepo", "kocirepository", "k-ocirepository"],
+    "description": "Kubernetes Flux OCIRepository",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/ocirepository-source-v1beta2.json",
+      "apiVersion: source.toolkit.fluxcd.io/v1beta2",
+      "kind: OCIRepository",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  interval: ${3:10m}",
+      "  url: ${4:oci://ghcr.io/fluxcd/flux-manifests}",
+      "  ref:",
+      "    tag: ${5:main}"
+    ]
+  },
+
+  "Kubernetes Flux HelmRelease": {
+    "prefix": ["khr", "k-hr", "khelmrelease", "k-helmrelease"],
+    "description": "Kubernetes Flux HelmRelease",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/helmrelease-helm-v2beta1.json",
+      "apiVersion: helm.toolkit.fluxcd.io/v2beta1",
+      "kind: HelmRelease",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  interval: ${2:15m}",
+      "  chart:",
+      "    spec:",
+      "      chart: ${3:app-template}",
+      "      version: ${4:v1.3.1}",
+      "      sourceRef:",
+      "        kind: HelmRepository",
+      "        name: ${5:bjw-s-charts}",
+      "        namespace: flux-system",
+      "      interval: ${2:15m}",
+      "  install:",
+      "    createNamespace: true",
+      "    remediation:",
+      "      retries: 5",
+      "  upgrade:",
+      "    remediation:",
+      "      retries: 5",
+      "  values:",
+      "    $0"
+    ]
+  },
+
+  "Kubernetes Flux HelmRepository": {
+    "prefix": ["khelmrepo", "k-helmrepo", "khelmrepository", "k-helmrepository"],
+    "description": "Kubernetes Flux HelmRepository",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/helmrepository-source-v1beta2.json",
+      "apiVersion: source.toolkit.fluxcd.io/v1beta2",
+      "kind: HelmRepository",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  interval: ${3:1h}",
+      "  url: ${4:https://prometheus-community.github.io/helm-charts}$0"
+    ]
+  },
+
+  "Kubernetes Flux Kustomization": {
+    "prefix": ["kfluxtomization", "k-fluxtomization"],
+    "description": "Kubernetes Flux Kustomization",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/kustomization-kustomize-v1beta2.json",
+      "apiVersion: kustomize.toolkit.fluxcd.io/v1beta2",
+      "kind: Kustomization",
+      "metadata:",
+      "  name: ${1:name}",
+      "  namespace: ${2:flux-system}",
+      "spec:",
+      "  path: ./${3:cluster/}",
+      "  sourceRef:",
+      "    kind: GitRepository",
+      "    name: flux-system",
+      "  interval: ${4:30m}",
+      "  prune: ${5|true,false|}",
+      "  wait: ${6|true,false|}",
+      "  $0"
+    ]
+  },
+
+  "Kubernetes Flux Alert": {
+    "prefix": ["kalert", "k-alert"],
+    "description": "Kubernetes Flux Alert",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/alert-notification-v1beta2.json",
+      "apiVersion: notification.toolkit.fluxcd.io/v1beta2",
+      "kind: Alert",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  providerRef:",
+      "    name: ${1:name}",
+      "  eventSeverity: ${2|info,alert|}",
+      "  eventSources:",
+      "    - kind: ${3|Bucket,GitRepository,Kustomization,HelmRelease,HelmChart,HelmRepository,ImageRepository,ImagePolicy,ImageUpdateAutomation,OCIRepository|}",
+      "      name: ${4:\"*\"}$0"
+    ]
+  },
+
+  "Kubernetes Flux Provider": {
+    "prefix": ["kprovider", "k-provider"],
+    "description": "Kubernetes Flux Provider",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/provider-notification-v1beta2.json",
+      "apiVersion: notification.toolkit.fluxcd.io/v1beta2",
+      "kind: Provider",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  type: ${2|slack,discord,msteams,rocker,generic,generic-hmac,github,gitlab,gitea,bitbucket,azuredevops,googlechat,webex,sentry,azureeventhub,telegram,lark,matrix,opsgenie,alertmanager,grafana,githubdispatch|}",
+      "  secretRef:",
+      "    name: ${3:slack-token}$0"
+    ]
+  }
+}
