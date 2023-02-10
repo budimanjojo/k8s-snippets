@@ -24,7 +24,7 @@
       {
         "language": "yaml",
         "path": "./snippets/volsync_backube-api.json"
-      },
+      }
     ]
   }
 }
