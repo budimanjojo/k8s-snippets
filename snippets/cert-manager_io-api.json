@@ -105,7 +105,7 @@
       "    clientID: ${5:Azure client ID}$0"
     ]
   },
-  
+
   "cert-manager Cloudflare DNS01 Solver": {
     "prefix": "cloudflare",
     "description": "cert-manager Cloudflare DNS01 Solver",
