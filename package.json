@@ -24,6 +24,10 @@
       {
         "language": "yaml",
         "path": "./snippets/volsync_backube-api.json"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/kyverno_io-api.json"
       }
     ]
   }
