@@ -2,6 +2,8 @@
 
 ### Kubernetes Snippets
 
+![](./assets/screencast.gif)
+
 </div>
 
 ## :book:&nbsp; Overview
