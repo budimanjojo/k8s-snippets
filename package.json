@@ -27,11 +27,7 @@
       },
       {
         "language": "yaml",
-        "path": "./snippets/kyverno_io-api.json"
-      },
-      {
-        "language": "yaml",
-        "path": "./snippets/metallb_io-api.json"
+        "path": "./snippets/monitoring_coreos-api.json"
       }
     ]
   }

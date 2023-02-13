@@ -1,0 +1,74 @@
+{
+  "Kubernetes PodMonitor Prometheus": {
+    "prefix": ["kpmon", "k-pmon", "kpodmonitor", "k-podmonitor"],
+    "description": "Kubernetes PodMonitor Prometheus",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/podmonitor_v1.json",
+      "apiVersion: monitoring.coreos.com/v1",
+      "kind: PodMonitor",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  selector:",
+      "    ${2|matchExpressions,matchLabels|}:",
+      "      ${3}",
+      "  namespaceSelector:",
+      "    matchNames:",
+      "      - ${4:default}",
+      "  podMetricsEndpoints",
+      "    - port: ${5:http}",
+      "      path: ${6:/metrics}",
+      "      scheme: ${7:http}$0"
+    ]
+  },
+
+  "Kubernetes ServiceMonitor Prometheus": {
+    "prefix": ["ksmon", "k-smon", "kservicemonitor", "k-servicemonitor"],
+    "description": "Kubernetes ServiceMonitor Prometheus",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/servicemonitor_v1.json",
+      "apiVersion: monitoring.coreos.com/v1",
+      "kind: ServiceMonitor",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  selector:",
+      "    ${2|matchExpressions,matchLabels|}:",
+      "      ${3}",
+      "  namespaceSelector:",
+      "    matchNames:",
+      "      - ${4:default}",
+      "  endpoints",
+      "    - port: ${5:http}",
+      "      path: ${6:/metrics}",
+      "      scheme: ${7:http}$0"
+    ]
+  },
+
+  "Kubernetes PrometheusRule Prometheus": {
+    "prefix": ["kpromrule", "k-promrule", "kprometheusrule", "k-prometheusrule"],
+    "description": "Kubernetes PrometheusRule Prometheus",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/prometheusrule_v1.json",
+      "apiVersion: monitoring.coreos.com/v1",
+      "kind: PrometheusRule",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  groups:",
+      "    - name: ${2:name.rules}",
+      "      rules:",
+      "        - alert: ${3:ServiceIsBroken}",
+      "          annotations:",
+      "            summary: ${4:Service is currently broken.}",
+      "          expr: |-",
+      "            ${5:container_last_seen{container=\"service\", container=\"\"}",
+      "          for: ${6:15m}",
+      "          labels:",
+      "            severity: ${7:critical}$0"
+    ]
+  }
+}
