@@ -65,7 +65,7 @@
       "          annotations:",
       "            summary: ${4:Service is currently broken.}",
       "          expr: |-",
-      "            ${5:container_last_seen{container=\"service\", container=\"\"}",
+      "            ${5:container_last_seen{container=\"service\", container=\"\"}}",
       "          for: ${6:15m}",
       "          labels:",
       "            severity: ${7:critical}$0"
