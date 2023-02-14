@@ -1,0 +1,64 @@
+{
+  "Kubernetes Actions HorizontalRunnerAutoscaler": {
+    "prefix": ["khra", "k-hra", "khorizontalrunnerautoscaler", "k-horizontalrunnerautoscaler"],
+    "description": "Kubernetes Actions HorizontalRunnerAutoscaler",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/horizontalrunnerautoscaler_v1alpha1.json",
+      "apiVersion: actions.summerwind.dev/v1alpha1",
+      "kind: HorizontalRunnerAutoscaler",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  scaleTargetRef:",
+      "    kind: ${2|RunnerDeployment,RunnerSet|}",
+      "    name: ${1:name}",
+      "  minReplicas: ${3:1}",
+      "  maxReplicas: ${4:3}",
+      "  metrics:",
+      "    - type: ${5|TotalNumberOfQueuedAndInProgressWorkflowRuns,PercentageRunnersBusy|}",
+      "      repositoryNames:",
+      "        - ${6:budimanjojo/k8s-snippets}$0"
+    ]
+  },
+
+  "Kubernetes Actions RunnerDeployment": {
+    "prefix": ["krdeploy", "k-rdeploy", "krunnerdeployment", "k-runnerdeployment"],
+    "description": "Kubernetes Actions RunnerDeployment",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/runnerdeployment_v1alpha1.json",
+      "apiVersion: actions.summerwind.dev/v1alpha1",
+      "kind: RunnerDeployment",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  template:",
+      "    spec:",
+      "      repository: ${2:budimanjojo/k8s-snippets}$0"
+    ]
+  },
+
+  "Kubernetes Actions RunnerSet": {
+    "prefix": ["krunnerset", "k-runnerset"],
+    "description": "Kubernetes Actions RunnerSet",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/runnerset_v1alpha1.json",
+      "apiVersion: actions.summerwind.dev/v1alpha1",
+      "kind: RunnerSet",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  repository: ${2:budimanjojo/k8s-snippets}",
+      "  selector:",
+      "    matchLabels:",
+      "      ${3:app.kubernetes.io/name}: ${1:name}",
+      "  serviceName: ${1:name}",
+      "  template:",
+      "    metadata:",
+      "      labels:",
+      "        ${3:app.kubernetes.io/name}: ${1:name}$0"
+    ]
+  }
+}

@@ -28,6 +28,10 @@
       {
         "language": "yaml",
         "path": "./snippets/monitoring_coreos-api.json"
+      },
+      {
+        "language": "yaml",
+        "path": "./snippets/actions_summerwind_dev-api.json"
       }
     ]
   }
