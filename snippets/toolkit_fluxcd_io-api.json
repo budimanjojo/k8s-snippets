@@ -125,7 +125,7 @@
       "spec:",
       "  providerRef:",
       "    name: ${1:name}",
-      "  eventSeverity: ${2|info,alert|}",
+      "  eventSeverity: ${2|error,info,alert|}",
       "  eventSources:",
       "    - kind: ${3|Bucket,GitRepository,Kustomization,HelmRelease,HelmChart,HelmRepository,ImageRepository,ImagePolicy,ImageUpdateAutomation,OCIRepository|}",
       "      name: ${4:\"*\"}$0"
