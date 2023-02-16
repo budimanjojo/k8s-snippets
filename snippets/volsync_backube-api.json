@@ -17,7 +17,7 @@
       "    copyMethod: ${3|Snapshot,Clone,Direct|}",
       "    pruneIntervalDays: ${4:10}",
       "    repository: ${5:app-restic-secret}",
-      "    volumeSnapShotClassName: ${6|rook-ceph-block,nfs-provisioner,default|}",
+      "    volumeSnapshotClassName: ${6|rook-ceph-block,nfs-provisioner,default|}",
       "    storageClassName: ${7|rook-ceph-block,nfs-provisioner,default|}",
       "    retain:",
       "      daily: ${8:10}",
