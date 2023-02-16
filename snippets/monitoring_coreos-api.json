@@ -12,7 +12,7 @@
       "spec:",
       "  selector:",
       "    ${2|matchExpressions,matchLabels|}:",
-      "      ${3}",
+      "      ${3:}",
       "  namespaceSelector:",
       "    matchNames:",
       "      - ${4:default}",
