@@ -132,6 +132,28 @@
     ]
   },
 
+  "Kubernetes Flux Receiver": {
+    "prefix": ["kreceiver", "k-receiver"],
+    "description": "Kubernetes Flux Receiver",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/receiver-notification-v1beta2.json",
+      "apiVersion: notification.toolkit.fluxcd.io/v1beta2",
+      "kind: Receiver",
+      "metadata:",
+      "  name: ${1:name}",
+      "spec:",
+      "  type: ${2|slack,discord,msteams,rocker,generic,generic-hmac,github,gitlab,gitea,bitbucket,azuredevops,googlechat,webex,sentry,azureeventhub,telegram,lark,matrix,opsgenie,alertmanager,grafana,githubdispatch|}",
+      "  events:",
+      "    - ${3:ping}",
+      "  secretRef:",
+      "    name: ${4:slack-token}",
+      "  resources:",
+      "    - kind: ${5|Bucket,GitRepository,Kustomization,HelmRelease,HelmChart,HelmRepository,ImageRepository,ImagePolicy,ImageUpdateAutomation,OCIRepository|}",
+      "      name: ${6:flux-system}$0"
+    ]
+  },
+
   "Kubernetes Flux Provider": {
     "prefix": ["kprovider", "k-provider"],
     "description": "Kubernetes Flux Provider",
