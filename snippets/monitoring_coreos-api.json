@@ -16,7 +16,7 @@
       "  namespaceSelector:",
       "    matchNames:",
       "      - ${4:default}",
-      "  podMetricsEndpoints",
+      "  podMetricsEndpoints:",
       "    - port: ${5:http}",
       "      path: ${6:/metrics}",
       "      scheme: ${7:http}$0"
