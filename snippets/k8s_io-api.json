@@ -449,6 +449,96 @@
     ]
   },
 
+  "Kubernetes ClusterRoleBinding": {
+    "prefix": ["kclusterrolebinding", "k-clusterrolebinding"],
+    "description": "Kubernetes ClusterRoleBinding",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/clusterrolebinding-rbac-v1.json",
+      "apiVersion: rbac.authorization.k8s.io/v1",
+      "kind: ClusterRoleBinding",
+      "metadata:",
+      "  name: ${1:name}",
+      "  labels:",
+      "    app.kubernetes.io/name: ${1:name}",
+      "roleRef:",
+      "  apiGroup: rbac.authorization.k8s.io",
+      "  kind: ClusterRole",
+      "  name: ${1:name}",
+      "subjects:",
+      "  - kind: ServiceAccount",
+      "    name: ${2:name}",
+      "    namespace: ${3:default}$0"
+    ]
+  },
+
+  "Kubernetes RoleBinding": {
+    "prefix": ["krolebinding", "k-rolebinding"],
+    "description": "Kubernetes RoleBinding",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/rolebinding-rbac-v1.json",
+      "apiVersion: rbac.authorization.k8s.io/v1",
+      "kind: RoleBinding",
+      "metadata:",
+      "  name: ${1:name}",
+      "  labels:",
+      "    app.kubernetes.io/name: ${1:name}",
+      "roleRef:",
+      "  apiGroup: rbac.authorization.k8s.io",
+      "  kind: Role",
+      "  name: ${1:name}",
+      "subjects:",
+      "  - kind: ServiceAccount",
+      "    name: ${2:name}",
+      "    namespace: ${3:default}$0"
+    ]
+  },
+
+  "Kubernetes ClusterRole": {
+    "prefix": ["kclusterrole", "k-clusterrole"],
+    "description": "Kubernetes ClusterRole",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/clusterrole-rbac-v1.json",
+      "apiVersion: rbac.authorization.k8s.io/v1",
+      "kind: ClusterRole",
+      "metadata:",
+      "  name: ${1:name}",
+      "  labels:",
+      "    app.kubernetes.io/name: ${1:name}",
+      "rules:",
+      "  - apiGroups:",
+      "      - ${2:\"\"}",
+      "    resources:",
+      "      - ${3:\"*\"}",
+      "    verbs:",
+      "      - ${4:create}$0"
+    ]
+  },
+
+  "Kubernetes Role": {
+    "prefix": ["krole", "k-role"],
+    "description": "Kubernetes Role",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/role-rbac-v1.json",
+      "apiVersion: rbac.authorization.k8s.io/v1",
+      "kind: Role",
+      "metadata:",
+      "  name: ${1:name}",
+      "  labels:",
+      "    app.kubernetes.io/name: ${1:name}",
+      "rules:",
+      "  - apiGroups:",
+      "      - ${2:\"\"}",
+      "    resources:",
+      "      - ${3:\"*\"}",
+      "    verbs:",
+      "      - ${4:create}$0"
+    ]
+  },
+
   "Kubernetes Kustomization": {
     "prefix": ["kkustomization", "k-kustomization"],
     "description": "Kubernetes Kustomization",
