@@ -123,6 +123,24 @@
     ]
   },
 
+  "Kubernetes StorageClass": {
+    "prefix": ["kstorageclass", "k-storageclass", "ksc", "k-sc"],
+    "description": "Kubernetes StorageClass",
+    "body": [
+      "---",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.26.1-standalone-strict/storageclass-storage-v1.json",
+      "apiVersion: v1",
+      "kind: StorageClass",
+      "metadata:",
+      "  name: ${1:name}",
+      "  labels:",
+      "    app.kubernetes.io/name: ${1:name}",
+      "provisioner: ${2:rook-ceph}",
+      "allowVolumeExpansion: ${3|true,false|}",
+      "reclaimPolicy: ${4|Delete,Retain,Recycle|}$0"
+    ]
+  },
+
   "Kubernetes PersistentVolumeClaim": {
     "prefix": ["kpersistentvolumeclaim", "k-persistentvolumeclaim", "kpvc", "k-pvc"],
     "description": "Kubernetes PersistentVolumeClaim",
