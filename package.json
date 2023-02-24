@@ -31,6 +31,10 @@
       },
       {
         "language": "yaml",
+        "path": "./snippets/nfd_k8s-sigs_io-api.json"
+      },
+      {
+        "language": "yaml",
         "path": "./snippets/actions_summerwind_dev-api.json"
       }
     ]
