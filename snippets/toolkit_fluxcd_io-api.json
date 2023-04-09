@@ -5,7 +5,7 @@
     "body": [
       "---",
       "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/gitrepository-source-v1beta2.json",
-      "apiVersion: source.toolkit.fluxcd.io/v1beta2",
+      "apiVersion: source.toolkit.fluxcd.io/v1",
       "kind: GitRepository",
       "metadata:",
       "  name: ${1:name}",
@@ -95,7 +95,7 @@
     "body": [
       "---",
       "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/kustomization-kustomize-v1beta2.json",
-      "apiVersion: kustomize.toolkit.fluxcd.io/v1beta2",
+      "apiVersion: kustomize.toolkit.fluxcd.io/v1",
       "kind: Kustomization",
       "metadata:",
       "  name: ${1:name}",
@@ -138,7 +138,7 @@
     "body": [
       "---",
       "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/receiver-notification-v1beta2.json",
-      "apiVersion: notification.toolkit.fluxcd.io/v1beta2",
+      "apiVersion: notification.toolkit.fluxcd.io/v1",
       "kind: Receiver",
       "metadata:",
       "  name: ${1:name}",
