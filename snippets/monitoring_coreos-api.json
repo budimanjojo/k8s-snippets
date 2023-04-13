@@ -4,7 +4,7 @@
     "description": "Kubernetes PodMonitor Prometheus",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/podmonitor_v1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/monitoring.coreos.com/podmonitor_v1.json",
       "apiVersion: monitoring.coreos.com/v1",
       "kind: PodMonitor",
       "metadata:",
@@ -28,7 +28,7 @@
     "description": "Kubernetes ServiceMonitor Prometheus",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/servicemonitor_v1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/monitoring.coreos.com/servicemonitor_v1.json",
       "apiVersion: monitoring.coreos.com/v1",
       "kind: ServiceMonitor",
       "metadata:",
@@ -52,7 +52,7 @@
     "description": "Kubernetes PrometheusRule Prometheus",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/prometheusrule_v1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/monitoring.coreos.com/prometheusrule_v1.json",
       "apiVersion: monitoring.coreos.com/v1",
       "kind: PrometheusRule",
       "metadata:",

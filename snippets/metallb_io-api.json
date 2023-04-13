@@ -4,7 +4,7 @@
     "description": "Kubernetes MetalLB BGPAdvertisement",
     "body": [
         "---",
-        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/bgpadvertisement_v1beta1.json",
+        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/metallb.io/bgpadvertisement_v1beta1.json",
         "apiVersion: metallb.io/v1beta1",
         "kind: BGPAdvertisement",
         "metadata:",
@@ -20,7 +20,7 @@
     "description": "Kubernetes MetalLB BGPPeer",
     "body": [
         "---",
-        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/bgppeer_v1beta2.json",
+        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/metallb.io/bgppeer_v1beta2.json",
         "apiVersion: metallb.io/v1beta2",
         "kind: BGPPeer",
         "metadata:",
@@ -37,7 +37,7 @@
     "description": "Kubernetes MetalLB IPAddressPool",
     "body": [
         "---",
-        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/ipaddresspool_v1beta1.json",
+        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/metallb.io/ipaddresspool_v1beta1.json",
         "apiVersion: metallb.io/v1beta2",
         "kind: IPAddressPool",
         "metadata:",
@@ -53,7 +53,7 @@
     "description": "Kubernetes MetalLB L2Advertisement",
     "body": [
         "---",
-        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/l2advertisement_v1beta1.json",
+        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/metallb.io/l2advertisement_v1beta1.json",
         "apiVersion: metallb.io/v1beta1",
         "kind: L2Advertisement",
         "metadata:",

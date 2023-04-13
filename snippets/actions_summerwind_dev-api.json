@@ -4,7 +4,7 @@
     "description": "Kubernetes Actions HorizontalRunnerAutoscaler",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/horizontalrunnerautoscaler_v1alpha1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/actions.summerwind.dev/horizontalrunnerautoscaler_v1alpha1.json",
       "apiVersion: actions.summerwind.dev/v1alpha1",
       "kind: HorizontalRunnerAutoscaler",
       "metadata:",
@@ -27,7 +27,7 @@
     "description": "Kubernetes Actions RunnerDeployment",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/runnerdeployment_v1alpha1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/actions.summerwind.dev/runnerdeployment_v1alpha1.json",
       "apiVersion: actions.summerwind.dev/v1alpha1",
       "kind: RunnerDeployment",
       "metadata:",
@@ -44,7 +44,7 @@
     "description": "Kubernetes Actions RunnerSet",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/runnerset_v1alpha1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/actions.summerwind.dev/runnerset_v1alpha1.json",
       "apiVersion: actions.summerwind.dev/v1alpha1",
       "kind: RunnerSet",
       "metadata:",

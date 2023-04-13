@@ -4,7 +4,7 @@
     "description": "Kubernetes Kyverno ClusterPolicy",
     "body": [
         "---",
-        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/clusterpolicy_v1.json",
+        "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/kyverno.io/clusterpolicy_v1.json",
         "apiVersion: kyverno.io/v1",
         "kind: ClusterPolicy",
         "metadata:",
