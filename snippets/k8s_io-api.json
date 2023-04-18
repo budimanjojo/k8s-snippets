@@ -298,7 +298,8 @@
       "                port:",
       "                  number: ${6:80}",
       "  tls:",
-      "    - hosts: ${4:example.foo.com}$0"
+      "    - hosts:",
+      "        - ${4:example.foo.com}$0"
     ]
   },
 
