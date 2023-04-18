@@ -286,20 +286,21 @@
       "  annotations:",
       "    nginx.ingress.kubernetes.io/${2:whitelist-source-range}: ${3:10.0.0.0/8}",
       "spec:",
+      "  ingressClassName: ${4:nginx}",
       "  rules:",
-      "    - host: ${4:example.foo.com}",
+      "    - host: ${5:example.foo.com}",
       "      http:",
       "        paths:",
-      "          - path: ${5:/api/(.*)}",
+      "          - path: ${6:/api/(.*)}",
       "            pathType: Prefix",
       "            backend:",
       "              service:",
       "                name: ${1:name}",
       "                port:",
-      "                  number: ${6:80}",
+      "                  number: ${7:80}",
       "  tls:",
       "    - hosts:",
-      "        - ${4:example.foo.com}$0"
+      "        - ${5:example.foo.com}$0"
     ]
   },
 
