@@ -4,7 +4,7 @@
     "description": "Kubernetes Traefik IngressRoute",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/traefik.containo.us/ingressroute_v1alpha1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/traefik.io/ingressroute_v1alpha1.json",
       "apiVersion: traefik.containo.us/v1alpha1",
       "kind: IngressRoute",
       "metadata:",
@@ -33,7 +33,7 @@
     "description": "Kubernetes Traefik Middleware",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/traefik.containo.us/middleware_v1alpha1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/traefik.io/middleware_v1alpha1.json",
       "apiVersion: traefik.containo.us/v1alpha1",
       "kind: Middleware",
       "metadata:",
@@ -50,7 +50,7 @@
     "description": "Kubernetes Traefik TLSOption",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/traefik.containo.us/tlsoption_v1alpha1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/traefik.io/tlsoption_v1alpha1.json",
       "apiVersion: traefik.containo.us/v1alpha1",
       "kind: TLSOption",
       "metadata:",
@@ -71,7 +71,7 @@
     "description": "Kubernetes Traefik ServersTransport",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/traefik.containo.us/serverstransport_v1alpha1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/traefik.io/serverstransport_v1alpha1.json",
       "apiVersion: traefik.containo.us/v1alpha1",
       "kind: ServersTransport",
       "metadata:",
