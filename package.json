@@ -15,10 +15,6 @@
       },
       {
         "language": "yaml",
-        "path": "./snippets/traefik_containo_us-api.json"
-      },
-      {
-        "language": "yaml",
         "path": "./snippets/cert-manager_io-api.json"
       },
       {
