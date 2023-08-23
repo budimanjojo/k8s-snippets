@@ -4,7 +4,7 @@
     "description": "Kubernetes Flux GitRepository",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/gitrepository-source-v1.json",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/gitrepository-source-v1.json",
       "apiVersion: source.toolkit.fluxcd.io/v1",
       "kind: GitRepository",
       "metadata:",
@@ -25,7 +25,7 @@
     "description": "Kubernetes Flux OCIRepository",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/ocirepository-source-v1beta2.json",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/ocirepository-source-v1beta2.json",
       "apiVersion: source.toolkit.fluxcd.io/v1beta2",
       "kind: OCIRepository",
       "metadata:",
@@ -44,7 +44,7 @@
     "description": "Kubernetes Flux HelmRelease",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/helmrelease-helm-v2beta1.json",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json",
       "apiVersion: helm.toolkit.fluxcd.io/v2beta1",
       "kind: HelmRelease",
       "metadata:",
@@ -77,7 +77,7 @@
     "description": "Kubernetes Flux HelmRepository",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/helmrepository-source-v1beta2.json",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrepository-source-v1beta2.json",
       "apiVersion: source.toolkit.fluxcd.io/v1beta2",
       "kind: HelmRepository",
       "metadata:",
@@ -94,7 +94,7 @@
     "description": "Kubernetes Flux Kustomization",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/kustomization-kustomize-v1.json",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json",
       "apiVersion: kustomize.toolkit.fluxcd.io/v1",
       "kind: Kustomization",
       "metadata:",
@@ -117,7 +117,7 @@
     "description": "Kubernetes Flux Alert",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/alert-notification-v1beta2.json",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/alert-notification-v1beta2.json",
       "apiVersion: notification.toolkit.fluxcd.io/v1beta2",
       "kind: Alert",
       "metadata:",
@@ -137,7 +137,7 @@
     "description": "Kubernetes Flux Receiver",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/receiver-notification-v1.json",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/receiver-notification-v1.json",
       "apiVersion: notification.toolkit.fluxcd.io/v1",
       "kind: Receiver",
       "metadata:",
@@ -159,7 +159,7 @@
     "description": "Kubernetes Flux Provider",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/provider-notification-v1beta2.json",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/provider-notification-v1beta2.json",
       "apiVersion: notification.toolkit.fluxcd.io/v1beta2",
       "kind: Provider",
       "metadata:",
