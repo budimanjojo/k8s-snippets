@@ -44,8 +44,8 @@
     "description": "Kubernetes Flux HelmRelease",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta1.json",
-      "apiVersion: helm.toolkit.fluxcd.io/v2beta1",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json",
+      "apiVersion: helm.toolkit.fluxcd.io/v2beta2",
       "kind: HelmRelease",
       "metadata:",
       "  name: ${1:name}",
@@ -117,8 +117,8 @@
     "description": "Kubernetes Flux Alert",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/alert-notification-v1beta2.json",
-      "apiVersion: notification.toolkit.fluxcd.io/v1beta2",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/alert-notification-v1beta3.json",
+      "apiVersion: notification.toolkit.fluxcd.io/v1beta3",
       "kind: Alert",
       "metadata:",
       "  name: ${1:name}",
@@ -159,8 +159,8 @@
     "description": "Kubernetes Flux Provider",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/provider-notification-v1beta2.json",
-      "apiVersion: notification.toolkit.fluxcd.io/v1beta2",
+      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/provider-notification-v1beta3.json",
+      "apiVersion: notification.toolkit.fluxcd.io/v1beta3",
       "kind: Provider",
       "metadata:",
       "  name: ${1:name}",
