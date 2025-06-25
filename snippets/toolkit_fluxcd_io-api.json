@@ -4,7 +4,7 @@
     "description": "Kubernetes Flux GitRepository",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/gitrepository-source-v1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/source.toolkit.fluxcd.io/gitrepository_v1.json",
       "apiVersion: source.toolkit.fluxcd.io/v1",
       "kind: GitRepository",
       "metadata:",
@@ -25,17 +25,21 @@
     "description": "Kubernetes Flux OCIRepository",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/ocirepository-source-v1beta2.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/source.toolkit.fluxcd.io/ocirepository_v1beta2.json",
       "apiVersion: source.toolkit.fluxcd.io/v1beta2",
       "kind: OCIRepository",
       "metadata:",
       "  name: ${1:name}",
       "  namespace: ${2:flux-system}",
       "spec:",
-      "  interval: ${3:10m}",
-      "  url: ${4:oci://ghcr.io/fluxcd/flux-manifests}",
+      "  interval: ${3:30m}",
+      "  timeout: ${4:60s}",
+      "  url: ${5:oci://ghcr.io/fluxcd/flux-manifests}",
       "  ref:",
-      "    tag: ${5:main}"
+      "    tag: ${6:main}",
+      "  layerSelector:",
+      "    mediaType: ${7:application/vnd.cncf.helm.chart.content.v1.tar+gzip}",
+      "    operation: ${8|copy,extract|}"
     ]
   },
 
@@ -44,24 +48,18 @@
     "description": "Kubernetes Flux HelmRelease",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrelease-helm-v2beta2.json",
-      "apiVersion: helm.toolkit.fluxcd.io/v2beta2",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/helm.toolkit.fluxcd.io/helmrelease_v2.json",
+      "apiVersion: helm.toolkit.fluxcd.io/v2",
       "kind: HelmRelease",
       "metadata:",
       "  name: ${1:name}",
       "spec:",
-      "  interval: ${2:15m}",
-      "  chart:",
-      "    spec:",
-      "      chart: ${3:app-template}",
-      "      version: ${4:v1.3.1}",
-      "      sourceRef:",
-      "        kind: HelmRepository",
-      "        name: ${5:bjw-s-charts}",
-      "        namespace: flux-system",
-      "      interval: ${2:15m}",
+      "  interval: ${2:1h}",
+      "  timeout: ${3:5m}",
+      "  chartRef:",
+      "    kind: OCIRepository",
+      "    name: ${4:name}",
       "  install:",
-      "    createNamespace: true",
       "    remediation:",
       "      retries: 5",
       "  upgrade:",
@@ -72,29 +70,12 @@
     ]
   },
 
-  "Kubernetes Flux HelmRepository": {
-    "prefix": ["khelmrepo", "k-helmrepo", "khelmrepository", "k-helmrepository"],
-    "description": "Kubernetes Flux HelmRepository",
-    "body": [
-      "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/helmrepository-source-v1beta2.json",
-      "apiVersion: source.toolkit.fluxcd.io/v1beta2",
-      "kind: HelmRepository",
-      "metadata:",
-      "  name: ${1:name}",
-      "  namespace: ${2:flux-system}",
-      "spec:",
-      "  interval: ${3:1h}",
-      "  url: ${4:https://prometheus-community.github.io/helm-charts}$0"
-    ]
-  },
-
   "Kubernetes Flux Kustomization": {
     "prefix": ["kfluxtomization", "k-fluxtomization"],
     "description": "Kubernetes Flux Kustomization",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/kustomization-kustomize-v1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/kustomize.toolkit.fluxcd.io/kustomization_v1.json",
       "apiVersion: kustomize.toolkit.fluxcd.io/v1",
       "kind: Kustomization",
       "metadata:",
@@ -105,7 +86,7 @@
       "  sourceRef:",
       "    kind: GitRepository",
       "    name: flux-system",
-      "  interval: ${4:30m}",
+      "  interval: ${4:1h}",
       "  prune: ${5|true,false|}",
       "  wait: ${6|true,false|}",
       "  $0"
@@ -117,7 +98,7 @@
     "description": "Kubernetes Flux Alert",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/alert-notification-v1beta3.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/notification.toolkit.fluxcd.io/alert_v1beta3.json",
       "apiVersion: notification.toolkit.fluxcd.io/v1beta3",
       "kind: Alert",
       "metadata:",
@@ -137,7 +118,7 @@
     "description": "Kubernetes Flux Receiver",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/receiver-notification-v1.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/notification.toolkit.fluxcd.io/receiver_v1.json",
       "apiVersion: notification.toolkit.fluxcd.io/v1",
       "kind: Receiver",
       "metadata:",
@@ -159,7 +140,7 @@
     "description": "Kubernetes Flux Provider",
     "body": [
       "---",
-      "# yaml-language-server: \\$schema=https://raw.githubusercontent.com/fluxcd-community/flux2-schemas/main/provider-notification-v1beta3.json",
+      "# yaml-language-server: \\$schema=https://schemas.budimanjojo.com/notification.fluxcd.io/provider_v1beta3.json",
       "apiVersion: notification.toolkit.fluxcd.io/v1beta3",
       "kind: Provider",
       "metadata:",
