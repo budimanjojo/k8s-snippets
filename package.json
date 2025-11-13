@@ -36,6 +36,10 @@
       {
         "language": "yaml",
         "path": "./snippets/actions_summerwind_dev-api.json"
+      },
+      {
+        "language": "editorconfig",
+        "path": "./snippets/editorconfig.json"
       }
     ]
   }
